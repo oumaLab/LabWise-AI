@@ -8,16 +8,16 @@ class RetrieverAgent:
     def _load_data(self):
         """Loads the text data into memory."""
         try:
-            if os.path.exists(self.kb_path):
-                with open(self.kb_path, "r", encoding="utf-8") as f:
+            # Robust path finding for Streamlit Cloud
+            # Assuming structure: /app/agents/retriever_agent.py and /app/data/medical_context.txt
+            base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            data_path = os.path.join(base_dir, self.kb_path)
+            
+            if os.path.exists(data_path):
+                with open(data_path, "r", encoding="utf-8") as f:
                     return f.read()
             else:
-                # Fallback if running from a different relative path
-                abs_path = os.path.join(os.getcwd(), self.kb_path)
-                if os.path.exists(abs_path):
-                     with open(abs_path, "r", encoding="utf-8") as f:
-                        return f.read()
-                return "No medical context found."
+                return f"Error: Medical context file not found at {data_path}"
         except Exception as e:
             return f"Error loading context: {str(e)}"
 
