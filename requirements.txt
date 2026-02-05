@@ -1,0 +1,5 @@
+streamlit
+pandas
+numpy
+sklearn-feature-extraction  # For TF-IDF if needed, or just standard scikit-learn
+scikit-learn
