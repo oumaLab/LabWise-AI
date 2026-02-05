@@ -1,5 +1,4 @@
-streamlit
-pandas
-numpy
-sklearn-feature-extraction  # For TF-IDF if needed, or just standard scikit-learn
-scikit-learn
+streamlit==1.54.0
+pandas==2.2.2
+numpy==1.26.4
+scikit-learn==1.4.2
